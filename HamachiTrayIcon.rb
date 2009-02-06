@@ -3,6 +3,12 @@ module Hamachi
     class << self
       def parse
         dump = `hamachi list`
+
+        if dump =~ /Hamachi does not seem to be running\./
+          @networks = nil
+          return
+        end
+
         networks = {}
         current_network = nil
         dump.each_line do |line|
@@ -106,7 +112,7 @@ class HamachiTrayIcon < NSObject
     Hamachi::CLI.start
     Hamachi::GUI.alloc.init
 
-    Thread.new do
+    @pollingthread = Thread.new do
       loop do
         sleep 10
         Hamachi::GUI.regenerate
@@ -115,6 +121,7 @@ class HamachiTrayIcon < NSObject
   end 
 
   def applicationShouldTerminate(sender)
+    #@pollingthread.kill
     exit
   end
 end 
