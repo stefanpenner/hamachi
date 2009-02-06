@@ -1,163 +1,72 @@
-
 require 'osx/cocoa' 
 include OSX 
 
+def rb_main_init
+  path = OSX::NSBundle.mainBundle.resourcePath.fileSystemRepresentation
+  rbfiles = Dir.entries(path).select {|x| /\.rb\z/ =~ x}
+  rbfiles -= [ File.basename(__FILE__) ]
+  rbfiles.each do |path|
+    require( File.basename(path) )
+  end
+end
+rb_main_init
+
 module Hamachi
   class CLI < NSObject
-    def self.start
-	  system('hamachi start')
-	end
-  
-    def self.stop
-      system('hamachi stop') 
-	end
-	
-	def self.get_nicks
-	  system('hamachi get-nicks')
-	end
-	
-	def self.go_online(group)
-	  system("hamachi go-online #{group}")
-	end
-	
-	def self.go_offline(group)
-	  system("hamachi go-offline #{group}")
-	end
-	def self.list
-	  # todo
-	end
+    class << self
+      # Return an array of network names.
+      def networks
+        dump = `hamachi list`
+        networks = dump.select{|line| line =~ /^...\[/}
+        networks.map!{|network| network.gsub(/^.*\[(.*?)\].*$/,'\1').strip}
+        networks
+      end
+      
+      # Make methods for each hamachi command that doesn't require a network param.
+      %w{start stop login logout get-nicks}.each do |command|
+        define_method(command.gsub('-','_').to_sym) do
+          runcommand(command)
+        end
+      end
+
+      # Make methods for each hamachi command that takes a network as a parameter.
+      %w{create delete evict join leave go-online go-offline}.each do |command|
+        define_method(command.gsub('-','_').to_sym) do |network|
+          runcommand(command, network)
+        end
+      end
+      
+      private
+      def runcommand(command, network=nil)
+        system "hamachi #{command} #{network if network}"
+      end
+    end
   end
   
   class GUI < NSObject
     def self.run
       statusbar = NSStatusBar.systemStatusBar 
       item = statusbar.statusItemWithLength(NSVariableStatusItemLength)  
-  	
-	  image_name = NSBundle.mainBundle.pathForResource_ofType('hamachi', 'png')
+      
+      image_name = NSBundle.mainBundle.pathForResource_ofType('hamachi', 'png')
       image = NSImage.alloc.initWithContentsOfFile(image_name)  
       item.setImage(image)  
-  
+      
       # build menu
-	  #
-	  # menu items are directly tied to there behaviour
-	  #
-	  
+      #
+      # menu items are directly tied to there behaviour
+      #
+      
       MenuController.alloc.init do |menu|
         menu.add_menu_to(item)
-		menu << Online.alloc.init
-		menu << Offline.alloc.init
-		menu << GetNicks.alloc.init
-        menu << Quiter.alloc.init
+        menu << Connect.alloc.init
+        menu << Disconnect.alloc.init
+        menu << GoOnline.alloc.init
+        menu << GoOffline.alloc.init
+        menu << Quit.alloc.init
       end
-	  Hamachi::CLI.start
+      Hamachi::CLI.start
     end
-  end
-end
-
-class Quiter < NSObject
-  
-  attr_accessor :name,
-                :method,
-                :shortcut,
-                :keyEquivalentModifierMask,
-                :target
-
-  def init
-    super_init
-    @name = 'Quit'
-    @method = 'terminate:'
-    @shortcut = 'q'
-    @keyEquivalentModifierMask = NSCommandKeyMask
-    @target = NSApp
-    self
-  end
-end
-
-class Online < NSObject
-
-   attr_accessor :name,
-                :method,
-                :shortcut,
-                :keyEquivalentModifierMask,
-                :target
-
-  def init
-    super_init
-    @name = 'Go Online'
-    @method = 'online:'
-    @shortcut = 'o'
-    @target = self
-    self
-  end
-  
-  def online(sender)
-    Hamachi::CLI.go_online('zzpluralzalpha')
-  end
-end
-
-class Offline < NSObject
-
-  attr_accessor :name,
-				:method,
-				:shortcut,
-				:keyEquivalentModifierMask,
-				:target
-				
-  def init
-    super_init
-    @name = 'Go Offline'
-    @method = 'offline:'
-    @shortcut = 'f'
-    @target = self
-    self
-  end
-  
-  def offline(sender)
-    Hamachi::CLI.go_offline('zzpluralzalpha')
-  end
-end
-
-class Stopper < NSObject
-
-   attr_accessor :name,
-                :method,
-                :shortcut,
-                :keyEquivalentModifierMask,
-                :target
-
-  def init
-    super_init
-    @name = 'Stop'
-    @method = 'stop:'
-    @shortcut = 't'
-    @target = self
-    self
-  end
-  
-  def stop(sender)
-    Hamachi::CLI.stop
-  end
-end
-
-class GetNicks < NSObject
-
-   attr_accessor :name,
-                :method,
-                :shortcut,
-                :keyEquivalentModifierMask,
-                :target
-
-  def init
-    super_init
-    @name = 'Get Nicks'
-    @method = 'get:'
-    @shortcut = 'g'
-    @target = self
-    self
-  end
-  
-  def get(sender)
-    Hamachi::CLI.get_nicks
   end
 end
 
@@ -166,7 +75,7 @@ class MenuController < NSObject
     super_init 
     @items =  [] 
     yield self if block_given?
-	build
+    build
   end
 
   def add_menu_to(container) 
@@ -178,7 +87,7 @@ class MenuController < NSObject
   def <<(item)
     @items << item
   end
- 
+  
   def build
     @items.each do |item|
       i = @menu.addItemWithTitle_action_keyEquivalent(item.name,item.method,item.shortcut)
@@ -196,13 +105,13 @@ end
 class App < NSObject 
   def applicationDidFinishLaunching(aNotification) 
     Hamachi::CLI.start
-	Hamachi::GUI.run
+    Hamachi::GUI.run
   end 
 
   def applicationShouldTerminate(sender)
     Hamachi::CLI.stop
-	sleep 1
-	exit
+    sleep 1
+    exit
   end
 end 
 
