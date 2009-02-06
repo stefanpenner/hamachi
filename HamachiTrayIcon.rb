@@ -62,16 +62,32 @@ module Hamachi
   end
   
   class GUI < NSObject
-    def self.run
+    def run
       statusbar = NSStatusBar.systemStatusBar 
-      item = statusbar.statusItemWithLength(NSVariableStatusItemLength)  
+      @@item = statusbar.statusItemWithLength(NSVariableStatusItemLength)  
       
       image_name = NSBundle.mainBundle.pathForResource_ofType('hamachi', 'png')
       image = NSImage.alloc.initWithContentsOfFile(image_name)  
-      item.setImage(image)  
-      
+      @@item.setImage(image)  
+
+      Hamachi::GUI.regenerate
+      self
+    end
+
+    def init
+      super_init
+      self.run
+      self
+    end
+    
+    def self.regenerate
+      Hamachi::CLI.parse
+      @@item.setMenu(self.build_menu)
+    end
+
+    private
+    def self.build_menu
       menu = NSMenu.alloc.init
-      item.setMenu(menu)
       Hamachi::CLI.networks.each do |network,attrs|
         menu.addItem(NetworkMenuItem.alloc.create(network,attrs))
       end
@@ -79,16 +95,23 @@ module Hamachi
       menu.addItem(Connect.alloc.init)
       menu.addItem(Disconnect.alloc.init)
       menu.addItem(Quit.alloc.init)
-      
-      Hamachi::CLI.start
+      menu
     end
+
   end
 end
 
 class HamachiTrayIcon < NSObject 
   def applicationDidFinishLaunching(aNotification) 
     Hamachi::CLI.start
-    Hamachi::GUI.run
+    Hamachi::GUI.alloc.init
+
+    Thread.new do
+      loop do
+        sleep 10
+        Hamachi::GUI.regenerate
+      end
+    end
   end 
 
   def applicationShouldTerminate(sender)

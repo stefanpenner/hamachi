@@ -10,9 +10,12 @@ class Connect < OSX::NSMenuItem
   end
   
   def online(sender)
-    Hamachi::CLI.start
-    Hamachi::CLI.login
-    Hamachi::CLI.get_nicks
+    Thread.new do
+      Hamachi::CLI.start
+      Hamachi::CLI.login
+      Hamachi::CLI.get_nicks
+      Hamachi::GUI.regenerate
+    end
   end
 end
 

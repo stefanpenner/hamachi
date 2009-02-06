@@ -10,7 +10,10 @@ class Disconnect < OSX::NSMenuItem
   end
   
   def offline(sender)
-    Hamachi::CLI.stop
+    Thread.new do
+      Hamachi::CLI.stop
+      Hamachi::GUI.regenerate
+    end
   end
 end
 

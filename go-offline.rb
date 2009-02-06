@@ -14,7 +14,10 @@ class GoOffline < OSX::NSMenuItem
   end
   
   def offline(sender)
-    Hamachi::CLI.go_offline(@network)
+    Thread.new do
+      Hamachi::CLI.go_offline(@network)
+      Hamachi::GUI.regenerate
+    end
   end
 end
 

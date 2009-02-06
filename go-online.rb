@@ -14,7 +14,10 @@ class GoOnline < OSX::NSMenuItem
   end
   
   def online(sender)
-    Hamachi::CLI.go_online(@network)
+    Thread.new do
+      Hamachi::CLI.go_online(@network)
+      Hamachi::GUI.regenerate
+    end
   end
 end
 
