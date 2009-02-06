@@ -948,7 +948,7 @@
 	82194D4B0F3C04E30051580E /* networkmenuitem.rb */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {724, 451}}";
-			sepNavSelRange = "{296, 0}";
+			sepNavSelRange = "{83, 0}";
 			sepNavVisRange = "{0, 296}";
 		};
 	};

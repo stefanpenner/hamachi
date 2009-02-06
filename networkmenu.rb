@@ -19,7 +19,7 @@ class NetworkMenu < OSX::NSMenu
     self.addItem(GoOffline.alloc.create(@name))
     self.addItem(Separator.alloc.init)
     Hamachi::CLI.clients(@name).each do |client|
-      self.addItem(Client.alloc.create(client[:nick]||client[:ip]))
+      self.addItem(Client.alloc.create(client))
     end
   end
     

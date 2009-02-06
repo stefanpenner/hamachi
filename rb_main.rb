@@ -43,7 +43,7 @@ module Hamachi
 
       def networks
         parse if !@networks
-        @networks.keys
+        @networks
       end
 
       def clients(network)
@@ -83,8 +83,8 @@ module Hamachi
       
       menu = NSMenu.alloc.init
       item.setMenu(menu)
-      Hamachi::CLI.networks.each do |network|
-        menu.addItem(NetworkMenuItem.alloc.create(network))
+      Hamachi::CLI.networks.each do |network,attrs|
+        menu.addItem(NetworkMenuItem.alloc.create(network,attrs))
       end
       menu.addItem(Separator.alloc.init)
       menu.addItem(Connect.alloc.init)

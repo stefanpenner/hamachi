@@ -21,6 +21,8 @@
 		82194D4C0F3C04E30051580E /* networkmenu.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194D4A0F3C04E30051580E /* networkmenu.rb */; };
 		82194D4D0F3C04E30051580E /* networkmenuitem.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194D4B0F3C04E30051580E /* networkmenuitem.rb */; };
 		82194D650F3C127A0051580E /* client.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194D640F3C127A0051580E /* client.rb */; };
+		82194D780F3C18CE0051580E /* online.png in Resources */ = {isa = PBXBuildFile; fileRef = 82194D760F3C18CE0051580E /* online.png */; };
+		82194D790F3C18CE0051580E /* offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 82194D770F3C18CE0051580E /* offline.png */; };
 		F87AEDCC0F3007B600AAF705 /* hamachi.png in Resources */ = {isa = PBXBuildFile; fileRef = F87AEDCB0F3007B600AAF705 /* hamachi.png */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		82194D4A0F3C04E30051580E /* networkmenu.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = networkmenu.rb; sourceTree = "<group>"; };
 		82194D4B0F3C04E30051580E /* networkmenuitem.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = networkmenuitem.rb; sourceTree = "<group>"; };
 		82194D640F3C127A0051580E /* client.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = client.rb; sourceTree = "<group>"; };
+		82194D760F3C18CE0051580E /* online.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = online.png; sourceTree = "<group>"; };
+		82194D770F3C18CE0051580E /* offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offline.png; sourceTree = "<group>"; };
 		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
 		E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 		F87AEDCB0F3007B600AAF705 /* hamachi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamachi.png; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				82194D760F3C18CE0051580E /* online.png */,
+				82194D770F3C18CE0051580E /* offline.png */,
 				F87AEDCB0F3007B600AAF705 /* hamachi.png */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 			);
@@ -207,6 +213,8 @@
 				82194D4C0F3C04E30051580E /* networkmenu.rb in Resources */,
 				82194D4D0F3C04E30051580E /* networkmenuitem.rb in Resources */,
 				82194D650F3C127A0051580E /* client.rb in Resources */,
+				82194D780F3C18CE0051580E /* online.png in Resources */,
+				82194D790F3C18CE0051580E /* offline.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
