@@ -175,7 +175,7 @@
 	};
 	82194C8E0F3BE3CF0051580E /* disconnect.rb */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {724, 474}}";
+			sepNavIntBoundsRect = "{{0, 0}, {724, 451}}";
 			sepNavSelRange = "{0, 267}";
 			sepNavVisRange = "{0, 267}";
 		};
@@ -937,6 +937,20 @@
 		rType = 0;
 		vrLen = 267;
 		vrLoc = 0;
+	};
+	82194D4A0F3C04E30051580E /* networkmenu.rb */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {724, 474}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 324}";
+		};
+	};
+	82194D4B0F3C04E30051580E /* networkmenuitem.rb */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {724, 451}}";
+			sepNavSelRange = "{296, 0}";
+			sepNavVisRange = "{0, 296}";
+		};
 	};
 	E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {
 		uiCtxt = {

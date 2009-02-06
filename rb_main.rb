@@ -14,12 +14,41 @@ rb_main_init
 module Hamachi
   class CLI < NSObject
     class << self
-      # Return an array of network names.
-      def networks
+      def parse
         dump = `hamachi list`
-        networks = dump.select{|line| line =~ /^...\[/}
-        networks.map!{|network| network.gsub(/^.*\[(.*?)\].*$/,'\1').strip}
-        networks
+        networks = {}
+        current_network = nil
+        dump.each_line do |line|
+          if line =~ /^...\[/ # If this is a network header...
+            arr = line.split(/\s+/).reject{|e|e.empty?}
+            network_connected = (arr[0] == "*")
+            arr.shift if network_connected
+            current_network = arr[0][1..-2] #remove the square brackets.
+            networks[current_network] = {:connected => network_connected, :clients => []}
+          else #this is a client listing.
+            arr = line.split(/\s+/).reject{|e|e.empty?}
+            client_connected = (arr[0] == "*")
+            arr.shift if client_connected
+            client_vpn_ip = arr[0]
+            client_nick = arr[1] rescue client_vpn_ip
+            networks[current_network][:clients].push({
+                                                       :ip => client_vpn_ip,
+                                                       :nick => client_nick,
+                                                       :connected => client_connected})
+          end
+        end
+
+        @networks = networks
+      end
+
+      def networks
+        parse if !@networks
+        @networks.keys
+      end
+
+      def clients(network)
+        parse if !@networks
+        @networks[network][:clients]
       end
       
       # Make methods for each hamachi command that doesn't require a network param.

@@ -1,7 +1,7 @@
 require 'osx/cocoa'
 
-class NetworkMenuItem < OSX::NSMenuItem
-  attr_accessor :title
+class Client < OSX::NSMenuItem
+  attr_accessor :title, :target
 
   def create(name)
     @name = name
@@ -12,10 +12,7 @@ class NetworkMenuItem < OSX::NSMenuItem
   def init
     super_init
     @title = @name
-    submenu = NetworkMenu.alloc.create(@name)
-    self.setSubmenu(submenu)
+    @target = self
     self
   end
-  
 end
-
