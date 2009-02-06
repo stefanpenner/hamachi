@@ -6,24 +6,24 @@ module Hamachi
         networks = {}
         current_network = nil
         dump.each_line do |line|
+          arr = line.split(/\s+/).reject{|e|e.empty?}
+          connected = (arr[0] == "*")
+          arr.shift if connected
           if line =~ /^...\[/ # If this is a network header...
-            arr = line.split(/\s+/).reject{|e|e.empty?}
-            network_connected = (arr[0] == "*")
-            arr.shift if network_connected
             current_network = arr[0][1..-2] #remove the square brackets.
-            networks[current_network] = {:connected => network_connected, :clients => []}
+            networks[current_network] = {:connected => connected, :clients => []}
           else #this is a client listing.
-            arr = line.split(/\s+/).reject{|e|e.empty?}
-            client_connected = (arr[0] == "*")
-            arr.shift if client_connected
-            client_vpn_ip = arr[0]
-            client_nick = arr[1] rescue client_vpn_ip
-            networks[current_network][:clients].push \
-            ({
-               :ip        => client_vpn_ip,
-               :nick      => client_nick,
-               :connected => client_connected
-             })
+            vpn_ip = arr[0]
+            nick = arr[1] rescue nil
+            # Sometimes we'll get a _real_ address, but no nick.
+            nick = nil if nick =~ /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\:\d+/
+            client={
+              :ip        => vpn_ip,
+              :nick      => nick,
+              :connected => connected
+            }
+            networks[current_network][:clients].push(client)
+
           end
         end
 
