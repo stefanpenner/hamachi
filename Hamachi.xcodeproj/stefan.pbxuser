@@ -1,0 +1,134 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeExecutable = F8CC9A720F300691008205F2 /* Hamachi */;
+		activeTarget = 4DDCA7030ACC9A6100E082CE /* Hamachi */;
+		addToTargets = (
+			4DDCA7030ACC9A6100E082CE /* Hamachi */,
+		);
+		codeSenseManager = F8CC9A850F300698008205F2 /* Code sense */;
+		executables = (
+			F8CC9A720F300691008205F2 /* Hamachi */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 255580048;
+			PBXWorkspaceStateSaveDate = 255580048;
+		};
+		perUserProjectItems = {
+			F87AEDDD0F30083A00AAF705 = F87AEDDD0F30083A00AAF705 /* PBXTextBookmark */;
+			F87AEEB00F301FA400AAF705 = F87AEEB00F301FA400AAF705 /* PBXTextBookmark */;
+		};
+		sourceControlManager = F8CC9A840F300698008205F2 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 294}";
+			sepNavWindowFrame = "{{130, 210}, {750, 558}}";
+		};
+	};
+	4DDCA7030ACC9A6100E082CE /* Hamachi */ = {
+		activeExec = 0;
+		executables = (
+			F8CC9A720F300691008205F2 /* Hamachi */,
+		);
+	};
+	4DDCA7110ACC9A6100E082CE /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 843}";
+			sepNavWindowFrame = "{{61, 273}, {750, 558}}";
+		};
+	};
+	E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1140, 3122}}";
+			sepNavSelRange = "{1050, 0}";
+			sepNavVisRange = "{856, 1080}";
+			sepNavWindowFrame = "{{78, -483}, {1199, 834}}";
+		};
+	};
+	F87AEDDD0F30083A00AAF705 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */;
+		name = "rb_main.rb: 94";
+		rLen = 0;
+		rLoc = 4186;
+		rType = 0;
+		vrLen = 732;
+		vrLoc = 1602;
+	};
+	F87AEEB00F301FA400AAF705 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */;
+		name = "rb_main.rb: 49";
+		rLen = 0;
+		rLoc = 1050;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 856;
+	};
+	F8CC9A720F300691008205F2 /* Hamachi */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Hamachi;
+		sourceDirectories = (
+		);
+	};
+	F8CC9A840F300698008205F2 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	F8CC9A850F300698008205F2 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
