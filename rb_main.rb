@@ -52,54 +52,36 @@ module Hamachi
       image = NSImage.alloc.initWithContentsOfFile(image_name)  
       item.setImage(image)  
       
-      # build menu
-      #
-      # menu items are directly tied to there behaviour
-      #
-      
-      MenuController.alloc.init do |menu|
-        menu.add_menu_to(item)
-        menu << Connect.alloc.init
-        menu << Disconnect.alloc.init
-        menu << GoOnline.alloc.init
-        menu << GoOffline.alloc.init
-        menu << Quit.alloc.init
-      end
+      MenuController.alloc.create(item)
+
       Hamachi::CLI.start
     end
   end
 end
 
 class MenuController < NSObject 
+  def create(container)
+    @container = container 
+    @menu = NSMenu.alloc.init
+    @container.setMenu(@menu) 
+    @items = [] 
+    self.init
+    self
+  end
+    
   def init 
     super_init 
-    @items =  [] 
-    yield self if block_given?
     build
   end
 
-  def add_menu_to(container) 
-    @container = container 
-    @menu = NSMenu.alloc.init 
-    @container.setMenu(@menu) 
-  end 
-  
-  def <<(item)
-    @items << item
-  end
-  
   def build
-    @items.each do |item|
-      i = @menu.addItemWithTitle_action_keyEquivalent(item.name,item.method,item.shortcut)
-      i.setKeyEquivalentModifierMask(item.keyEquivalentModifierMask) if item.respond_to?(:keyEquivalentModifierMask)
-
-      if item.respond_to?(:target) && item.target
-        i.setTarget(item.target)
-      else
-        i.setTarget(self)
-      end
-    end
+    @menu.addItem(Connect.alloc.init)
+    @menu.addItem(Disconnect.alloc.init)
+    @menu.addItem(GoOnline.alloc.create("zzpluralzalpha"))
+    @menu.addItem(GoOffline.alloc.create("zzpluralzalpha"))
+    @menu.addItem(Quit.alloc.init)
   end
+
 end 
 
 class App < NSObject 
@@ -109,7 +91,8 @@ class App < NSObject
   end 
 
   def applicationShouldTerminate(sender)
-    Hamachi::CLI.stop
+    # I'd really rather it didn't.
+    # Hamachi::CLI.stop
     sleep 1
     exit
   end

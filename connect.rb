@@ -1,13 +1,12 @@
 require 'osx/cocoa'
 
-class Connect < OSX::NSObject
-  attr_accessor :name, :method, :shortcut, :keyEquivalentModifierMask, :target
+class Connect < OSX::NSMenuItem
+  attr_accessor :title, :action, :target
 
   def init
     super_init
-    @name = 'Connect'
-    @method = 'online:'
-    @shortcut = 'c'
+    @title = 'Connect'
+    @action = 'online:'
     @target = self
     self
   end

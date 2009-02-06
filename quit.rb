@@ -1,20 +1,13 @@
 require 'osx/cocoa'
 
-class Quit < OSX::NSObject
-  
-  attr_accessor :name,
-  :method,
-  :shortcut,
-  :keyEquivalentModifierMask,
-  :target
+class Quit < OSX::NSMenuItem
+  attr_accessor :title, :action, :target
 
   def init
     super_init
-    @name = 'Quit'
-    @method = 'terminate:'
-    @shortcut = 'q'
-    @keyEquivalentModifierMask = NSCommandKeyMask
-    @target = NSApp
+    @title = 'Quit'
+    @action = 'terminate:'
+    @target = OSX::NSApp
     self
   end
 end

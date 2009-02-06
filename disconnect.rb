@@ -1,13 +1,12 @@
 require 'osx/cocoa'
 
-class Disconnect < OSX::NSObject
-  attr_accessor :name, :method, :shortcut, :keyEquivalentModifierMask, :target
+class Disconnect < OSX::NSMenuItem
+  attr_accessor :title, :action, :target
 
   def init
     super_init
-    @name = 'Disconnect'
-    @method = 'offline:'
-    @shortcut = 'd'
+    @title = 'Disconnect'
+    @action = 'offline:'
     @target = self
     self
   end

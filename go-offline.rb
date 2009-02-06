@@ -1,19 +1,24 @@
 require 'osx/cocoa'
 
-class GoOffline < OSX::NSObject
-  attr_accessor :name, :method, :shortcut, :keyEquivalentModifierMask, :target
-
+class GoOffline < OSX::NSMenuItem
+  attr_accessor :title, :action, :target
+  
+  def create(network)
+    @network=network
+    self.init
+    self
+  end
+  
   def init
     super_init
-    @name = 'Go Offline'
-    @method = 'offline:'
-	@shortcut = 'f'
+    @title = 'Go Offline'
+    @action = 'offline:'
     @target = self
     self
   end
   
   def offline(sender)
-    Hamachi::CLI.go_offline
+    Hamachi::CLI.go_offline(@network)
   end
 end
 
