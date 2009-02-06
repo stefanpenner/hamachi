@@ -4,43 +4,43 @@ module Hamachi
       def parse
         dump = `hamachi list`
 
-        if dump =~ /Hamachi does not seem to be running\./
+        if dump =~ /Hamachi does not seem to be running/
           @networks = nil
           return
         end
 
         networks = {}
+        states = {"*" => :online, "x" => :error}
         current_network = nil
         dump.each_line do |line|
           arr = line.split(/\s+/).reject{|e|e.empty?}
-          connected = (arr[0] == "*")
-          arr.shift if connected
+
+          state = arr[0]
+          state = states[state] || :offline
+          
+          arr.shift unless state == :offline
           if line =~ /^...\[/ # If this is a network header...
             current_network = arr[0][1..-2] #remove the square brackets.
-            networks[current_network] = {:connected => connected, :clients => []}
+            networks[current_network] = {:state => state, :clients => []}
           else #this is a client listing.
             vpn_ip = arr[0]
             nick = arr[1] rescue nil
             # Sometimes we'll get a _real_ address, but no nick.
             nick = nil if nick =~ /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\:\d+/
             client={
-              :ip        => vpn_ip,
-              :nick      => nick,
-              :connected => connected
+              :ip    => vpn_ip,
+              :nick  => nick,
+              :state => state
             }
             networks[current_network][:clients].push(client)
-
           end
         end
-
+        p networks
         @networks = networks
       end
 
-      def networks
-        parse if !@networks
-        @networks
-      end
-
+      def networks; @networks; end
+      
       def clients(network)
         parse if !@networks
         @networks[network][:clients]
@@ -88,6 +88,7 @@ module Hamachi
     
     def self.regenerate
       Hamachi::CLI.parse
+      puts "regenerated"
       @@item.setMenu(self.build_menu)
     end
 
@@ -97,7 +98,7 @@ module Hamachi
       Hamachi::CLI.networks.each do |network,attrs|
         menu.addItem(NetworkMenuItem.alloc.create(network,attrs))
       end
-      menu.addItem(NSMenuItem.separatorItem)
+      menu.addItem(NSMenuItem.separatorItem) if Hamachi::CLI.networks
       menu.addItem(Connect.alloc.init)
       menu.addItem(Disconnect.alloc.init)
       menu.addItem(Quit.alloc.init)
@@ -112,7 +113,7 @@ class HamachiTrayIcon < NSObject
     Hamachi::CLI.start
     Hamachi::GUI.alloc.init
 
-    @pollingthread = Thread.new do
+    Thread.new do
       loop do
         sleep 10
         Hamachi::GUI.regenerate
@@ -121,7 +122,6 @@ class HamachiTrayIcon < NSObject
   end 
 
   def applicationShouldTerminate(sender)
-    #@pollingthread.kill
     exit
   end
 end 

@@ -6,7 +6,7 @@ class Client < OSX::NSMenuItem
 
     name = client[:nick] || client[:ip]
 
-    image_path = client[:connected] ? 'online' : 'offline'
+    image_path = client[:state].to_s
     image_name = NSBundle.mainBundle.pathForResource_ofType(image_path, 'png')
     image = NSImage.alloc.initWithContentsOfFile(image_name)  
 

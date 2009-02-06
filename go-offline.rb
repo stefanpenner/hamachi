@@ -4,7 +4,7 @@ class GoOffline < OSX::NSMenuItem
   def create(network)
     super_init
     @network=network
-    unless Hamachi::CLI.networks[network][:connected]
+    if Hamachi::CLI.networks[network][:state] == :offline
       setState OSX::NSOnState
     end
     setTitle 'Go Offline'
