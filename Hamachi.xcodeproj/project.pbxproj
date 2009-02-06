@@ -18,6 +18,8 @@
 		82194CB10F3BEABE0051580E /* go-offline.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194CB00F3BEABE0051580E /* go-offline.rb */; };
 		82194CB30F3BEAEA0051580E /* go-online.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194CB20F3BEAEA0051580E /* go-online.rb */; };
 		82194D1C0F3BF29F0051580E /* separator.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194D1B0F3BF29F0051580E /* separator.rb */; };
+		82194D4C0F3C04E30051580E /* networkmenu.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194D4A0F3C04E30051580E /* networkmenu.rb */; };
+		82194D4D0F3C04E30051580E /* networkmenuitem.rb in Resources */ = {isa = PBXBuildFile; fileRef = 82194D4B0F3C04E30051580E /* networkmenuitem.rb */; };
 		F87AEDCC0F3007B600AAF705 /* hamachi.png in Resources */ = {isa = PBXBuildFile; fileRef = F87AEDCB0F3007B600AAF705 /* hamachi.png */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		82194CB00F3BEABE0051580E /* go-offline.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "go-offline.rb"; sourceTree = "<group>"; };
 		82194CB20F3BEAEA0051580E /* go-online.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "go-online.rb"; sourceTree = "<group>"; };
 		82194D1B0F3BF29F0051580E /* separator.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = separator.rb; sourceTree = "<group>"; };
+		82194D4A0F3C04E30051580E /* networkmenu.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = networkmenu.rb; sourceTree = "<group>"; };
+		82194D4B0F3C04E30051580E /* networkmenuitem.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = networkmenuitem.rb; sourceTree = "<group>"; };
 		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
 		E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 		F87AEDCB0F3007B600AAF705 /* hamachi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamachi.png; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				82194D4A0F3C04E30051580E /* networkmenu.rb */,
+				82194D4B0F3C04E30051580E /* networkmenuitem.rb */,
 				82194C8E0F3BE3CF0051580E /* disconnect.rb */,
 				82194C8C0F3BE38B0051580E /* connect.rb */,
 				82194C980F3BE6510051580E /* quit.rb */,
@@ -195,6 +201,8 @@
 				82194CB10F3BEABE0051580E /* go-offline.rb in Resources */,
 				82194CB30F3BEAEA0051580E /* go-online.rb in Resources */,
 				82194D1C0F3BF29F0051580E /* separator.rb in Resources */,
+				82194D4C0F3C04E30051580E /* networkmenu.rb in Resources */,
+				82194D4D0F3C04E30051580E /* networkmenuitem.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -275,7 +275,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -300,7 +299,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>580 201 993 808 0 0 1680 1028 </string>
+						<string>24 164 993 808 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -316,7 +315,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>go-online.rb</string>
+								<string>disconnect.rb</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,20 +323,21 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>go-online.rb</string>
+										<string>disconnect.rb</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>82194D010F3BEBB20051580E</string>
+										<string>82194D490F3C04D20051580E</string>
 										<key>history</key>
 										<array>
 											<string>82194CBF0F3BEBB20051580E</string>
 											<string>82194CC00F3BEBB20051580E</string>
 											<string>82194CC10F3BEBB20051580E</string>
-											<string>82194CC20F3BEBB20051580E</string>
 											<string>82194CC30F3BEBB20051580E</string>
 											<string>82194CC40F3BEBB20051580E</string>
-											<string>82194CC50F3BEBB20051580E</string>
+											<string>82194D440F3C04D20051580E</string>
+											<string>82194D450F3C04D20051580E</string>
+											<string>82194D460F3C04D20051580E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -400,6 +400,8 @@
 											<string>82194CFE0F3BEBB20051580E</string>
 											<string>82194CFF0F3BEBB20051580E</string>
 											<string>82194D000F3BEBB20051580E</string>
+											<string>82194D470F3C04D20051580E</string>
+											<string>82194D480F3C04D20051580E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -413,7 +415,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {785, 506}}</string>
 								<key>RubberWindowFrame</key>
-								<string>580 201 993 808 0 0 1680 1028 </string>
+								<string>24 164 993 808 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -433,7 +435,7 @@
 								<key>Frame</key>
 								<string>{{0, 511}, {785, 256}}</string>
 								<key>RubberWindowFrame</key>
-								<string>580 201 993 808 0 0 1680 1028 </string>
+								<string>24 164 993 808 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -601,7 +603,7 @@
 		<string>/Users/burke/devel/hamachi/Hamachi.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>580 201 993 808 0 0 1680 1028 </string>
+	<string>24 164 993 808 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

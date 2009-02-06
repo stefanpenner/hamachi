@@ -52,37 +52,20 @@ module Hamachi
       image = NSImage.alloc.initWithContentsOfFile(image_name)  
       item.setImage(image)  
       
-      MenuController.alloc.create(item)
-
+      menu = NSMenu.alloc.init
+      item.setMenu(menu)
+      Hamachi::CLI.networks.each do |network|
+        menu.addItem(NetworkMenuItem.alloc.create(network))
+      end
+      menu.addItem(Separator.alloc.init)
+      menu.addItem(Connect.alloc.init)
+      menu.addItem(Disconnect.alloc.init)
+      menu.addItem(Quit.alloc.init)
+      
       Hamachi::CLI.start
     end
   end
 end
-
-class MenuController < NSObject 
-  def create(container)
-    @container = container 
-    @menu = NSMenu.alloc.init
-    @container.setMenu(@menu) 
-    @items = [] 
-    self.init
-    self
-  end
-    
-  def init 
-    super_init 
-    build
-  end
-
-  def build
-    @menu.addItem(Connect.alloc.init)
-    @menu.addItem(Disconnect.alloc.init)
-    @menu.addItem(GoOnline.alloc.create("zzpluralzalpha"))
-    @menu.addItem(GoOffline.alloc.create("zzpluralzalpha"))
-    @menu.addItem(Quit.alloc.init)
-  end
-
-end 
 
 class App < NSObject 
   def applicationDidFinishLaunching(aNotification) 
@@ -91,9 +74,6 @@ class App < NSObject
   end 
 
   def applicationShouldTerminate(sender)
-    # I'd really rather it didn't.
-    # Hamachi::CLI.stop
-    sleep 1
     exit
   end
 end 
