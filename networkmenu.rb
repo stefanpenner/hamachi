@@ -1,26 +1,17 @@
 require 'osx/cocoa'
 
 class NetworkMenu < OSX::NSMenu
-
   def create(name)
-    @name = name
-    self.init
+    super_init
+    addItem(GoOnline.alloc.create(name))
+    addItem(GoOffline.alloc.create(name))
+    addItem(NSMenuItem.separatorItem)
+    Hamachi::CLI.clients(name).each do |client|
+      self.addItem(Client.alloc.create(client))
+    end
     self
   end
   
   def init
-    super_init
-    build
-    self
   end
-
-  def build
-    self.addItem(GoOnline.alloc.create(@name))
-    self.addItem(GoOffline.alloc.create(@name))
-    self.addItem(Separator.alloc.init)
-    Hamachi::CLI.clients(@name).each do |client|
-      self.addItem(Client.alloc.create(client))
-    end
-  end
-    
 end

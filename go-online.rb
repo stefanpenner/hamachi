@@ -1,20 +1,16 @@
 require 'osx/cocoa'
 
 class GoOnline < OSX::NSMenuItem
-  attr_accessor :title, :action, :target
-
   def create(network)
+    super_init
     @network = network
-    self.init
+    setTitle 'Go Online'
+    setAction 'online:'
+    setTarget self
     self
   end
   
   def init
-    super_init
-    @title = 'Go Online'
-    @action = 'online:'
-    @target = self
-    self
   end
   
   def online(sender)

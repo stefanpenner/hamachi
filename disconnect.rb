@@ -1,13 +1,11 @@
 require 'osx/cocoa'
 
 class Disconnect < OSX::NSMenuItem
-  attr_accessor :title, :action, :target
-
   def init
     super_init
-    @title = 'Disconnect'
-    @action = 'offline:'
-    @target = self
+    setTitle 'Disconnect'
+    setAction 'offline:'
+    setTarget self
     self
   end
   

@@ -1,28 +1,22 @@
 require 'osx/cocoa'
 
 class Client < OSX::NSMenuItem
-  attr_accessor :title, :target
-
   def create(client)
-    @client = client
-    @connected = @client[:connected]
-    @name = client[:nick] || client[:ip]
+    super_init
 
-    @imagepath = @connected ? 'online' : 'offline'
+    name = client[:nick] || client[:ip]
 
-    self.init
+    image_path = client[:connected] ? 'online' : 'offline'
+    image_name = NSBundle.mainBundle.pathForResource_ofType(image_path, 'png')
+    image = NSImage.alloc.initWithContentsOfFile(image_name)  
+
+    setImage image
+    setTitle name
+    setTarget self
+
     self
   end
   
   def init
-    super_init
-    @title = @name
-    @target = self
-
-    image_name = NSBundle.mainBundle.pathForResource_ofType(@imagepath, 'png')
-    image = NSImage.alloc.initWithContentsOfFile(image_name)  
-    self.setImage(image)
-
-    self
   end
 end
