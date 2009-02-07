@@ -81,7 +81,7 @@ module Hamachi
       @@item = statusbar.statusItemWithLength(NSVariableStatusItemLength)  
       
       image_name = NSBundle.mainBundle.pathForResource_ofType('hamachi', 'png')
-      image = NSImage.alloc.initWithContentsOfFile(image_name)  
+      image = NSImage.alloc.initWithContentsOfFile(image_name)
       @@item.setImage(image)  
 
       Hamachi::GUI.regenerate

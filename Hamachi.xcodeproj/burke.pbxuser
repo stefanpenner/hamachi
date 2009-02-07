@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 82194C7F0F3BE3480051580E /* Hamachi */;
 		activeTarget = 4DDCA7030ACC9A6100E082CE /* Hamachi */;
 		addToTargets = (
@@ -113,6 +113,12 @@
 			82194D490F3C04D20051580E = 82194D490F3C04D20051580E /* PBXTextBookmark */;
 			821E9A8F0F3C23690058789C /* PBXTextBookmark */ = 821E9A8F0F3C23690058789C /* PBXTextBookmark */;
 			821E9AA80F3C24810058789C /* PBXTextBookmark */ = 821E9AA80F3C24810058789C /* PBXTextBookmark */;
+			821E9B240F3D64DE0058789C /* PBXTextBookmark */ = 821E9B240F3D64DE0058789C /* PBXTextBookmark */;
+			821E9B250F3D64DE0058789C /* PBXTextBookmark */ = 821E9B250F3D64DE0058789C /* PBXTextBookmark */;
+			821E9B260F3D64DE0058789C /* PlistBookmark */ = 821E9B260F3D64DE0058789C /* PlistBookmark */;
+			821E9B270F3D64DE0058789C /* PBXTextBookmark */ = 821E9B270F3D64DE0058789C /* PBXTextBookmark */;
+			821E9B280F3D64DE0058789C /* PBXTextBookmark */ = 821E9B280F3D64DE0058789C /* PBXTextBookmark */;
+			821E9B290F3D64DE0058789C /* PlistBookmark */ = 821E9B290F3D64DE0058789C /* PlistBookmark */;
 		};
 		sourceControlManager = 82194C880F3BE34F0051580E /* Source Control */;
 		userBuildSettings = {
@@ -198,9 +204,9 @@
 	};
 	82194CB20F3BEAEA0051580E /* go-online.rb */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {724, 474}}";
-			sepNavSelRange = "{222, 0}";
-			sepNavVisRange = "{0, 319}";
+			sepNavIntBoundsRect = "{{0, 0}, {724, 378}}";
+			sepNavSelRange = "{299, 0}";
+			sepNavVisRange = "{0, 447}";
 		};
 	};
 	82194CBF0F3BEBB20051580E /* PBXTextBookmark */ = {
@@ -980,6 +986,68 @@
 		rType = 0;
 		vrLen = 225;
 		vrLoc = 0;
+	};
+	821E9B240F3D64DE0058789C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 82194C8E0F3BE3CF0051580E /* disconnect.rb */;
+		name = "disconnect.rb: 17";
+		rLen = 0;
+		rLoc = 225;
+		rType = 0;
+		vrLen = 225;
+		vrLoc = 0;
+	};
+	821E9B250F3D64DE0058789C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 82194CB20F3BEAEA0051580E /* go-online.rb */;
+		name = "go-online.rb: 15";
+		rLen = 0;
+		rLoc = 299;
+		rType = 0;
+		vrLen = 447;
+		vrLoc = 0;
+	};
+	821E9B260F3D64DE0058789C /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 4DDCA7110ACC9A6100E082CE /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/burke/devel/hamachi/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	821E9B270F3D64DE0058789C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 82194C8E0F3BE3CF0051580E /* disconnect.rb */;
+		name = "disconnect.rb: 17";
+		rLen = 0;
+		rLoc = 225;
+		rType = 0;
+		vrLen = 225;
+		vrLoc = 0;
+	};
+	821E9B280F3D64DE0058789C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 82194CB20F3BEAEA0051580E /* go-online.rb */;
+		name = "go-online.rb: 15";
+		rLen = 0;
+		rLoc = 299;
+		rType = 0;
+		vrLen = 447;
+		vrLoc = 0;
+	};
+	821E9B290F3D64DE0058789C /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 4DDCA7110ACC9A6100E082CE /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/burke/devel/hamachi/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 	E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {
 		uiCtxt = {
