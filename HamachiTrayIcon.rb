@@ -5,14 +5,14 @@ end
 require 'logger'
 
 $log = Logger.new($stdout)
-$log.level = Logger::DEBUG
+$log.level = Logger::INFO
 
 module Hamachi
   class CLI < NSObject
     class << self
       def parse
         dump = `hamachi list`
-
+        
         if dump =~ /Hamachi does not seem to be running/
           @connected = false
           @networks = nil
@@ -95,7 +95,7 @@ module Hamachi
     end
     
     def self.regenerate
-      $log.debug "Hamachi::GUI.regenerate called"
+      $log.info "Hamachi::GUI.regenerate called"
       Hamachi::CLI.parse
       @@item.setMenu(self.build_menu)
     end
@@ -131,7 +131,7 @@ class HamachiTrayIcon < NSObject
 
     Thread.new do
       loop do
-        sleep 15
+        sleep 10
         Hamachi::GUI.regenerate
       end
     end
