@@ -1,3 +1,12 @@
+begin
+  require 'rubygems'
+rescue LoadError
+end
+require 'logger'
+
+$log = Logger.new($stdout)
+$log.level = Logger::DEBUG
+
 module Hamachi
   class CLI < NSObject
     class << self
@@ -5,9 +14,11 @@ module Hamachi
         dump = `hamachi list`
 
         if dump =~ /Hamachi does not seem to be running/
+          @connected = false
           @networks = nil
           return
         end
+        @connected = true
 
         networks = {}
         states = {"*" => :online, "x" => :error}
@@ -35,16 +46,11 @@ module Hamachi
             networks[current_network][:clients].push(client)
           end
         end
-        p networks
         @networks = networks
       end
 
+      def connected?; @connected; end
       def networks; @networks; end
-      
-      def clients(network)
-        parse if !@networks
-        @networks[network][:clients]
-      end
       
       # Make methods for each hamachi command that doesn't require a network param.
       %w{start stop login logout get-nicks}.each do |command|
@@ -62,7 +68,9 @@ module Hamachi
       
       private
       def runcommand(command, network=nil)
+        $log.debug "starting command #{command}"
         system "hamachi #{command} #{network if network}"
+        $log.debug "finished command #{command}"
       end
     end
   end
@@ -87,21 +95,29 @@ module Hamachi
     end
     
     def self.regenerate
+      $log.debug "Hamachi::GUI.regenerate called"
       Hamachi::CLI.parse
-      puts "regenerated"
       @@item.setMenu(self.build_menu)
     end
 
     private
     def self.build_menu
+      $log.debug "Building menu"
       menu = NSMenu.alloc.init
-      Hamachi::CLI.networks.each do |network,attrs|
-        menu.addItem(NetworkMenuItem.alloc.create(network,attrs))
+      if Hamachi::CLI.networks
+        Hamachi::CLI.networks.each do |network,attrs|
+          menu.addItem(NetworkMenuItem.alloc.create(network,attrs))
+        end
       end
       menu.addItem(NSMenuItem.separatorItem) if Hamachi::CLI.networks
-      menu.addItem(Connect.alloc.init)
-      menu.addItem(Disconnect.alloc.init)
+      if Hamachi::CLI.connected?
+        menu.addItem(Disconnect.alloc.init)
+      else
+        menu.addItem(Connect.alloc.init)
+      end
+      menu.addItem(GetNicks.alloc.init)
       menu.addItem(Quit.alloc.init)
+      $log.debug "Finished building menu"
       menu
     end
 
@@ -115,7 +131,7 @@ class HamachiTrayIcon < NSObject
 
     Thread.new do
       loop do
-        sleep 10
+        sleep 15
         Hamachi::GUI.regenerate
       end
     end

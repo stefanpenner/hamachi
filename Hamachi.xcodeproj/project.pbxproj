@@ -24,6 +24,7 @@
 		82194D790F3C18CE0051580E /* offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 82194D770F3C18CE0051580E /* offline.png */; };
 		821E9A9C0F3C23E60058789C /* HamachiTrayIcon.rb in Resources */ = {isa = PBXBuildFile; fileRef = 821E9A9B0F3C23E60058789C /* HamachiTrayIcon.rb */; };
 		821E9AF90F3CC2E60058789C /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 821E9AF80F3CC2E60058789C /* error.png */; };
+		821E9B140F3D5D8C0058789C /* getnicks.rb in Resources */ = {isa = PBXBuildFile; fileRef = 821E9B130F3D5D8C0058789C /* getnicks.rb */; };
 		F87AEDCC0F3007B600AAF705 /* hamachi.png in Resources */ = {isa = PBXBuildFile; fileRef = F87AEDCB0F3007B600AAF705 /* hamachi.png */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		82194D770F3C18CE0051580E /* offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offline.png; sourceTree = "<group>"; };
 		821E9A9B0F3C23E60058789C /* HamachiTrayIcon.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HamachiTrayIcon.rb; sourceTree = "<group>"; };
 		821E9AF80F3CC2E60058789C /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = ../../Desktop/error.png; sourceTree = SOURCE_ROOT; };
+		821E9B130F3D5D8C0058789C /* getnicks.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = getnicks.rb; sourceTree = "<group>"; };
 		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
 		E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 		F87AEDCB0F3007B600AAF705 /* hamachi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamachi.png; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				821E9B130F3D5D8C0058789C /* getnicks.rb */,
 				821E9AF80F3CC2E60058789C /* error.png */,
 				821E9A9B0F3C23E60058789C /* HamachiTrayIcon.rb */,
 				82194D640F3C127A0051580E /* client.rb */,
@@ -219,6 +222,7 @@
 				82194D790F3C18CE0051580E /* offline.png in Resources */,
 				821E9A9C0F3C23E60058789C /* HamachiTrayIcon.rb in Resources */,
 				821E9AF90F3CC2E60058789C /* error.png in Resources */,
+				821E9B140F3D5D8C0058789C /* getnicks.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
